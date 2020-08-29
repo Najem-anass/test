@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+
+  </div>
+
+</nav>
+
+<div class="container" >
+  <div >
+    <div>
+
+      <h1>appareil</h1>
+      <p>date : {{date | date : 'short' }} </p>
+
+      <ul class="list-group">
+        <app-appareil *ngFor = "let appareil of appareils"
+                      [appareilName]="appareil.name"
+                      [appareilStatut]="appareil.statut" ></app-appareil>
+      </ul>
+      
+    </div>
+  </div>
+
+</div>

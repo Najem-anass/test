@@ -1,0 +1,11 @@
+<div [ngClass]="{'list-group-item':true,
+                'list-group-item-success': appareilStatut==='allumé',
+                'list-group-item-danger': appareilStatut==='eteint' }">
+
+    <h4 [ngStyle]="{color:getColor()}">
+        Appareil : {{appareilName}} --------- statut : {{appareilStatut}} 
+    </h4>
+
+    <button class="btn btn-success" (click)="onAllume()" >allumer</button>
+    <button class="btn btn-danger"  (click)="onEteint()">éteindre</button>
+</div>
