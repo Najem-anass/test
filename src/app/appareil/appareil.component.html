@@ -6,6 +6,6 @@
         Appareil : {{appareilName}} --------- statut : {{appareilStatut}} 
     </h4>
 
-    <button class="btn btn-success" (click)="onAllume()" >allumer</button>
-    <button class="btn btn-danger"  (click)="onEteint()">éteindre</button>
+    <button class="btn btn-success" (click)="onAllume()" [disabled]="appareilStatut==='allumé'" >allumer</button>
+    <button class="btn btn-danger"  (click)="onEteint()" [disabled]="appareilStatut==='eteint'" >éteindre</button>
 </div>

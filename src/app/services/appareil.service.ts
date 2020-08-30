@@ -1,5 +1,5 @@
 export class AppareilService {
-
+   
     appareils = [
         { name: "tele", statut: "allumé" },
         { name: "phone", statut: "allumé" },
@@ -17,5 +17,13 @@ export class AppareilService {
             appareil.statut='eteint';
         }
     }
+
+    switchOnOne(index: number) {
+        this.appareils[index].statut='allumé';
+    }
+
+    switchOffOne(index: number) {
+        this.appareils[index].statut='eteint';
+      }
 
 }
