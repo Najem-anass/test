@@ -1,19 +1,22 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import 'rxjs/Rx';
+import { AppareilService } from './services/appareil.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  appareils : any[];
+
+  constructor(private appareilService : AppareilService){}
   
-  appareils=[
-    {name:"tele" , statut:"allumé"},
-    {name:"phone" , statut:"allumé"},
-    {name:"frigo" , statut:"eteint"}
-  ];
 
   date = new Date();
+
+  ngOnInit(): void {
+    this.appareils = this.appareilService.appareils;
+  }
 
 }
