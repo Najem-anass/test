@@ -17,6 +17,9 @@
                       [appareilName]="appareil.name"
                       [appareilStatut]="appareil.statut" ></app-appareil>
       </ul>
+
+      <button class="btn btn-success" (click)="onAllumeTout()" >allumer tout</button>
+      <button class="btn btn-danger" (click)="onEteintTout()" >éteindre tout</button>
       
     </div>
   </div>
