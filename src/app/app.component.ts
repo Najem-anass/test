@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
   onEteintTout() {
     console.log("click onEteintTout");
-    this.appareilService.switchOffAll();
+    this.appareilService.switchOffAll(); 
   }
 
 }

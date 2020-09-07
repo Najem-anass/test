@@ -9,14 +9,14 @@ export class AppareilService {
     switchOnAll() {
         for (let appareil of this.appareils) {
             appareil.statut='allumé';
-            console.log("inside switchOnAll",appareil.statut);
+            console.log("inside switchOnAll",appareil.statut)
         }
     }
 
     switchOffAll() {
         for (let appareil of this.appareils) {
             appareil.statut='éteint';
-            console.log("inside switchOffAll",appareil.statut);
+            console.log("inside switchOffAll",appareil.statut)
         }
     }
 
