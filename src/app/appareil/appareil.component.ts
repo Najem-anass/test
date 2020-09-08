@@ -16,7 +16,7 @@ export class AppareilComponent implements OnInit {
   }
 
   getColor(){
-    if(this.appareilStatut==="eteint"){
+    if(this.appareilStatut==="éteint"){
       return "red";
     }
     else {
@@ -29,7 +29,7 @@ export class AppareilComponent implements OnInit {
   }
 
   onEteint(){
-    this.appareilStatut='eteint';
+    this.appareilStatut='éteint';
   }
 
 }
