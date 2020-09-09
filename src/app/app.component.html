@@ -13,7 +13,8 @@
       <p>date : {{date | date : 'short' }} </p>
 
       <ul class="list-group">
-        <app-appareil *ngFor = "let appareil of appareils"
+        <app-appareil *ngFor = "let appareil of appareils; let i=index"
+                      [indexOfAppareil]="i"
                       [appareilName]="appareil.name"
                       [appareilStatut]="appareil.statut" ></app-appareil>
       </ul>
