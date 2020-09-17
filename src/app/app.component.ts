@@ -7,26 +7,9 @@ import { AppareilService } from './services/appareil.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  appareils: any;
-
-  constructor(private appareilService: AppareilService) { }
-
-  date = new Date();
-
-  ngOnInit() {
-    this.appareils = this.appareilService.appareils;
-  }
-
-  onAllumeTout() {
-    this.appareilService.onSwitchOnAll();
-  }
-
-  onEteintTout(){
-    this.appareilService.onSwitchOffAll();
-  } 
-
+  constructor(){};
 }
 
 
