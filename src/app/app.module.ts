@@ -11,6 +11,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppareilComponent } from './appareil/appareil.component';
 import { AppareilService } from './services/appareil.service';
+import { AuthComponent } from './auth/auth.component';
+import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCVU3WBb9PHhLfV3DpscgHKQtSWNT5wmRI",
@@ -27,6 +29,8 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     AppareilComponent,
+    AuthComponent,
+    AppareilViewComponent,
   ],
 
   imports: [
