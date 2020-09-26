@@ -13,6 +13,15 @@ import { AppareilComponent } from './appareil/appareil.component';
 import { AppareilService } from './services/appareil.service';
 import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
+import { RouterModule, Routes } from '@angular/router';
+import { auth } from 'firebase';
+import { AuthService } from './services/auth.service';
+
+const appRoutes : Routes = [
+  {path:""    , component : AppareilViewComponent},
+  {path:"appareils" , component : AppareilViewComponent},
+  {path:"auth"  ,   component : AuthComponent}
+];
 
 const firebaseConfig = {
     apiKey: "AIzaSyCVU3WBb9PHhLfV3DpscgHKQtSWNT5wmRI",
@@ -35,6 +44,7 @@ const firebaseConfig = {
 
   imports: [
     BrowserModule,
+    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig, 'angular-ff931'),
     AngularFirestoreModule, // Only required for database features
     AngularFireAuthModule, // Only required for auth features,
@@ -42,9 +52,14 @@ const firebaseConfig = {
   ],
 
   providers: [
-    AppareilService
+    AppareilService,
+    AuthService
   ],
   
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(){}
+
+}

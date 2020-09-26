@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  authStatus: boolean;
 
-  ngOnInit(): void {
+  constructor(private authService: AuthService , private router : Router) { }
+
+  ngOnInit() {
+    this.authStatus = this.authService.isAuth;
+  }
+
+  onConnecte() {
+    this.authService.connect()
+    this.authStatus = this.authService.isAuth;
+    console.log(this.authStatus);
+    this.router.navigate(['appareils']);
+  }
+
+  onDeconnecte() {
+    this.authService.deconnect();
+    this.authStatus = this.authService.isAuth;
   }
 
 }
