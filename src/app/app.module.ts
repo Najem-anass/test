@@ -14,6 +14,7 @@ import { AppareilService } from './services/appareil.service';
 import { AppareilViewComponantComponent } from './appareil-view-componant/appareil-view-componant.component';
 import { AuthComponent } from './auth/auth.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthServiceService } from './services/auth-service.service';
 
 const appRoutes: Routes = [
   { path: "", component: AppareilViewComponantComponent },
@@ -50,7 +51,8 @@ const firebaseConfig = {
   ],
 
   providers: [
-    AppareilService
+    AppareilService,
+    AuthServiceService
   ],
 
   bootstrap: [AppComponent]
