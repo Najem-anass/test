@@ -25,6 +25,7 @@ export class AuthComponent implements OnInit {
   }
 
   onDeconnecte() {
+    console.log("dans on deconnecte");
     this.authService.deconnect();
     this.authStatus = this.authService.isAuth;
   }

@@ -8,4 +8,13 @@ import { AppareilService } from './services/appareil.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
- }
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+
+  }
+
+}

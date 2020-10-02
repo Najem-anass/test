@@ -16,10 +16,12 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { auth } from 'firebase';
 import { AuthService } from './services/auth.service';
+import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 
 const appRoutes : Routes = [
   {path:""    , component : AppareilViewComponent},
   {path:"appareils" , component : AppareilViewComponent},
+  {path:"appareils/:id",component:SingleAppareilComponent},
   {path:"auth"  ,   component : AuthComponent}
 ];
 
@@ -40,6 +42,7 @@ const firebaseConfig = {
     AppareilComponent,
     AuthComponent,
     AppareilViewComponent,
+    SingleAppareilComponent,
   ],
 
   imports: [
