@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { AppareilService } from '../services/appareil.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class AppareilComponent implements OnInit {
   @Input() appareilName : string;
   @Input() appareilStatut: string;
   @Input() indexOfAppareil : number;
+  @Input() id : number;
 
   constructor(private appareilService : AppareilService) { }
 
