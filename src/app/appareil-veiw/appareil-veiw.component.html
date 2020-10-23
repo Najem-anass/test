@@ -1,11 +1,13 @@
 <div>
-
     <h1>appareil</h1>
     <p>date : {{date | date : 'short' }} </p>
 
     <ul class="list-group">
-        <app-appareil *ngFor="let appareil of appareils; let i = index" [indexOfAppareil]="i"
-            [appareilName]="appareil.name" [appareilStatut]="appareil.statut"></app-appareil>
+        <app-appareil *ngFor="let appareil of appareils; let i = index" 
+                    [indexOfAppareil]="i"
+                    [appareilName]="appareil.name" 
+                    [appareilStatut]="appareil.statut"
+                    [id]='appareil.id'></app-appareil>
     </ul>
 
     <button class="btn btn-success" (click)="onAllumeTout()">tout allumer</button>

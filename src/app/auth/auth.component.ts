@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  auth : boolean;
+  constructor(private authService : AuthServiceService) { }
 
   ngOnInit(): void {
+    this.auth = this.authService.isAuth;
+  }
+
+  onConnecte(){
+    console.log("hey");
+    this.authService.connecte();
+    this.auth = this.authService.isAuth;
+  }
+
+  onDeconnecte(){
+    console.log("hello");
+    this.authService.deconnecte();
+    this.auth = this.authService.isAuth;
   }
 
 }

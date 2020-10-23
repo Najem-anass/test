@@ -13,12 +13,19 @@ import { AppareilComponent } from './appareil/appareil.component';
 import { AppareilService } from './services/appareil.service';
 import { AppareilVeiwComponent } from './appareil-veiw/appareil-veiw.component';
 import { AuthComponent } from './auth/auth.component';
-import { RouterModule , Routes } from '@angular/router'
+import { RouterModule , Routes } from '@angular/router';
+import { SignleAppareilComponent } from './signle-appareil/signle-appareil.component'
+import { sign } from 'crypto';
+import { AuthGuardService } from './services/auth-guard.service';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 
 const appRoutes : Routes = [
-  {path : 'appareils' , component:AppareilVeiwComponent},
+  {path : 'appareils' , canActivate:[AuthGuardService], component:AppareilVeiwComponent},
   {path : 'auth' , component :AuthComponent},
-  {path : '' , component : AppareilVeiwComponent}
+  {path : 'appareils/:id' , canActivate:[AuthGuardService], component:SignleAppareilComponent},
+  {path : '' , component : AppareilVeiwComponent},
+  {path : 'not-found' , component : FourOhFourComponent},
+  {path : '**' , redirectTo : '/not-found'}
 ]
 
 const firebaseConfig = {
@@ -38,6 +45,7 @@ const firebaseConfig = {
     AppareilComponent,
     AppareilVeiwComponent,
     AuthComponent,
+    SignleAppareilComponent,
   ],
 
   imports: [

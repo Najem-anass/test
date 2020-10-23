@@ -6,6 +6,7 @@
         Appareil : {{appareilName}} --------- statut : {{appareilStatut}} 
     </h4>
 
+    <a [routerLink]="[id]">detail</a>
     <button class="btn btn-success" (click)="onAllume()" [disabled]="appareilStatut==='allumé'" >allumer</button>
     <button class="btn btn-danger"  (click)="onEteint()" [disabled]="appareilStatut==='eteint'" >éteindre</button>
 </div>
