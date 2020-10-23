@@ -16,12 +16,16 @@ import { AuthComponent } from './auth/auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthServiceService } from './services/auth-service.service';
 import { SinglAppareilComponent } from './singl-appareil/singl-appareil.component';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
   { path: "", component: AppareilViewComponantComponent },
-  { path: "appareils", component: AppareilViewComponantComponent },
-  { path:"appareils/:id",component:SinglAppareilComponent},
-  { path: "auth", component: AuthComponent }
+  { path: "appareils", canActivate : [AuthGuardService] , component: AppareilViewComponantComponent },
+  { path: "appareils/:id", canActivate : [AuthGuardService] , component:SinglAppareilComponent},
+  { path: "auth", component: AuthComponent },
+  { path: "not-found" , component : FourOhFourComponent},
+  { path: "**" , redirectTo : "/not-found"}
 ];
 
 const firebaseConfig = {
@@ -41,7 +45,8 @@ const firebaseConfig = {
     AppareilComponent,
     AppareilViewComponantComponent,
     AuthComponent,
-    SinglAppareilComponent
+    SinglAppareilComponent,
+    FourOhFourComponent
   ],
 
   imports: [
@@ -55,7 +60,8 @@ const firebaseConfig = {
 
   providers: [
     AppareilService,
-    AuthServiceService
+    AuthServiceService,
+    AuthGuardService
   ],
 
   bootstrap: [AppComponent]
