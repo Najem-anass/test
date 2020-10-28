@@ -15,7 +15,6 @@ import { AppareilVeiwComponent } from './appareil-veiw/appareil-veiw.component';
 import { AuthComponent } from './auth/auth.component';
 import { RouterModule , Routes } from '@angular/router';
 import { SignleAppareilComponent } from './signle-appareil/signle-appareil.component'
-import { sign } from 'crypto';
 import { AuthGuardService } from './services/auth-guard.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-four-oh-four',
@@ -10,6 +11,7 @@ export class FourOhFourComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
