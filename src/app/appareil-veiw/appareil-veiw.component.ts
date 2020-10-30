@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { AppareilService } from '../services/appareil.service';
 
 @Component({
@@ -8,13 +9,23 @@ import { AppareilService } from '../services/appareil.service';
 })
 export class AppareilVeiwComponent implements OnInit {
 
-  appareils: any[];
+    //attrubits
+  date = new Date();
+  appareilSubscription : Subscription;
+  appareilsList: any[];
 
-  constructor(private appareilService: AppareilService) {
+  constructor(private appareilService: AppareilService) {}
 
-  }
+
   ngOnInit() {
-    this.appareils = this.appareilService.appareils;
+
+    //start listening before creation of the emission
+    this.appareilSubscription = this.appareilService.appareilSubject.subscribe(
+      (receivedData:any[]) => {this.appareilsList = receivedData}
+    );
+
+    //emission
+    this.appareilService.emitAppareilSubject();
   }
 
   onAllumeTout() {
@@ -24,8 +35,5 @@ export class AppareilVeiwComponent implements OnInit {
   onEteindreTout() {
     this.appareilService.switchOffAll();
   }
-
-  date = new Date();
-
 
 }
