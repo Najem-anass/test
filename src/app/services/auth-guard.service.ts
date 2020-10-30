@@ -12,7 +12,6 @@ export class AuthGuardService implements CanActivate {
               private router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot
     ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    throw new Error('Method not implemented.');
 
     if(this.authService.isAuth){
       return true;
