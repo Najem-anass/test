@@ -18,11 +18,13 @@ import { AuthServiceService } from './services/auth-service.service';
 import { SinglAppareilComponent } from './singl-appareil/singl-appareil.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
 
 const appRoutes: Routes = [
   { path: "", component: AppareilViewComponantComponent },
   { path: "appareils", canActivate : [AuthGuardService] , component: AppareilViewComponantComponent },
   { path: "appareils/:id", canActivate : [AuthGuardService] , component:SinglAppareilComponent},
+  { path : "edit-appareil" , canActivate : [AuthGuardService] , component : EditAppareilComponent},
   { path: "auth", component: AuthComponent },
   { path: "not-found" , component : FourOhFourComponent},
   { path: "**" , redirectTo : "/not-found"}
@@ -46,7 +48,8 @@ const firebaseConfig = {
     AppareilViewComponantComponent,
     AuthComponent,
     SinglAppareilComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    EditAppareilComponent
   ],
 
   imports: [

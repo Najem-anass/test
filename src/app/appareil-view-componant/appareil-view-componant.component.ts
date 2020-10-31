@@ -9,13 +9,18 @@ import { AppareilService } from '../services/appareil.service';
 export class AppareilViewComponantComponent implements OnInit {
 
   appareils: any;
+  appareilSubscription;
 
   constructor(private appareilService: AppareilService) { }
 
   date = new Date();
 
   ngOnInit() {
-    this.appareils = this.appareilService.appareils;
+    this.appareilSubscription = this.appareilService.appareilSubject.subscribe(
+      (value : any[]) => {this.appareils = value}
+    );
+
+    this.appareilService.emitAppareilSubject();
   }
 
   onAllumeTout() {
