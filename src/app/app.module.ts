@@ -19,6 +19,7 @@ import { SinglAppareilComponent } from './singl-appareil/singl-appareil.componen
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: "", component: AppareilViewComponantComponent },
@@ -53,6 +54,7 @@ const firebaseConfig = {
   ],
 
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig, 'angular-ff931'),
