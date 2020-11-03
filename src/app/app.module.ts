@@ -19,11 +19,14 @@ import { AuthService } from './services/auth.service';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes : Routes = [
   {path:""    , component : AppareilViewComponent},
   {path:"appareils" , canActivate: [AuthGuardService], component : AppareilViewComponent},
   {path:"appareils/:id", canActivate: [AuthGuardService] , component:SingleAppareilComponent},
+  {path:"edit-appareil", canActivate:[AuthGuardService] , component:EditAppareilComponent},
   {path:"auth"  ,   component : AuthComponent},
   {path:"not-found",component:FourOhFourComponent},
   {path:'**' , redirectTo:"/not-found"}
@@ -47,9 +50,11 @@ const firebaseConfig = {
     AuthComponent,
     AppareilViewComponent,
     SingleAppareilComponent,
+    EditAppareilComponent,
   ],
 
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig, 'angular-ff931'),
