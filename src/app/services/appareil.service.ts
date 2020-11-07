@@ -10,6 +10,19 @@ export class AppareilService {
         { id:3, name: "frigo", statut: "éteint" }
     ];
 
+    addAppareil(name:string , statut : string ){
+        const appareilObject = {
+            id:0, name : "" , statut : ""
+        };
+
+        appareilObject.id = this.appareils[this.appareils.length-1].id+1;
+        appareilObject.name = name;
+        appareilObject.statut = statut;
+
+        this.appareils.push(appareilObject);
+        this.emitAppareilSubject();
+    }
+
     emitAppareilSubject(){
         this.appareilSubject.next(this.appareils.slice());
     }
