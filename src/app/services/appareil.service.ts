@@ -8,8 +8,23 @@ export class AppareilService {
     private appareils = [
         { id: 1, name: "tele", statut: "allumé" },
         { id: 2, name: "phone", statut: "allumé" },
-        { id: 3, name: "frigo", statut: "eteint" }
+        { id: 3, name: "frigo", statut: "éteint" }
     ];
+
+    addAppareil(name:string , statut : string){
+        const appareilObject = {
+            id:0,
+            name : '',
+            statut : ''
+        };
+
+        appareilObject.id=this.appareils[this.appareils.length-1].id+1;
+        appareilObject.name=name;
+        appareilObject.statut=statut;
+
+        this.appareils.push(appareilObject);
+        this.emitAppareilSubject();
+    }
 
     //methode
     emitAppareilSubject(){
@@ -33,7 +48,7 @@ export class AppareilService {
 
     switchOffAll() {
         for (let appareil of this.appareils) {
-            appareil.statut = 'eteint';
+            appareil.statut = 'éteint';
         }
         this.emitAppareilSubject();
     }
@@ -44,7 +59,7 @@ export class AppareilService {
     }
 
     switchOffOne(index: number) {
-        this.appareils[index].statut = 'eteint';
+        this.appareils[index].statut = 'éteint';
         this.emitAppareilSubject();
     }
 

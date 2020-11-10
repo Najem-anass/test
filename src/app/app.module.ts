@@ -17,11 +17,21 @@ import { RouterModule , Routes } from '@angular/router';
 import { SignleAppareilComponent } from './signle-appareil/signle-appareil.component'
 import { AuthGuardService } from './services/auth-guard.service';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { AuthServiceService } from './services/auth-service.service';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserService } from './services/user.service';
+import { User } from './models/user.model';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const appRoutes : Routes = [
   {path : 'appareils' , canActivate:[AuthGuardService], component:AppareilVeiwComponent},
   {path : 'auth' , component :AuthComponent},
   {path : 'appareils/:id' , canActivate:[AuthGuardService], component:SignleAppareilComponent},
+  {path : 'edit-appareils', canActivate : [AuthGuardService] , component : EditAppareilComponent},
+  {path : 'users' , component : UserListComponent},
+  {path : 'new-user' , canActivate : [AuthGuardService] , component : NewUserComponent},
   {path : '' , component : AppareilVeiwComponent},
   {path : 'not-found' , component : FourOhFourComponent},
   {path : '**' , redirectTo : '/not-found'}
@@ -45,10 +55,15 @@ const firebaseConfig = {
     AppareilVeiwComponent,
     AuthComponent,
     SignleAppareilComponent,
+    EditAppareilComponent,
+    UserListComponent,
+    NewUserComponent,
   ],
 
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig, 'angular-ff931'),
     AngularFirestoreModule, // Only required for database features
@@ -57,7 +72,10 @@ const firebaseConfig = {
   ],
 
   providers: [
-    AppareilService
+    AppareilService,
+    AuthGuardService,
+    AuthServiceService,
+    UserService
   ],
   
   bootstrap: [AppComponent]
