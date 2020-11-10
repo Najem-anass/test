@@ -23,6 +23,13 @@
             </select>
         </div>
 
+        <div formArrayName='hobbies'>
+            <h3>Vos Hobbies</h3>
+            <div class="form-group" *ngFor="let hobbyControl of getHobbies().controls , let i = index" >
+                <input type="text" class="from-control" [formControlName]='i' name="" id="">
+            </div>
+            <button type="button" class="btn btn-primary" (click)="onAddHobby()" >Ajouter un hooby</button>
+        </div>
         <button class="btn btn-primary" type="submit" [disabled]='userForm.invalid' >Ajouter</button>
     </form>
 </div>
