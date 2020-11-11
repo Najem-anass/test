@@ -20,13 +20,17 @@ import { SingleAppareilComponent } from './single-appareil/single-appareil.compo
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserListComponent } from './user-list/user-list.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const appRoutes : Routes = [
   {path:""    , component : AppareilViewComponent},
   {path:"appareils" , canActivate: [AuthGuardService], component : AppareilViewComponent},
   {path:"appareils/:id", canActivate: [AuthGuardService] , component:SingleAppareilComponent},
   {path:"edit-appareil", canActivate:[AuthGuardService] , component:EditAppareilComponent},
+  {path : "users-list" , canActivate:[AuthGuardService], component : UserListComponent},
+  {path : 'new-user' , canActivate:[AuthGuardService], component : NewUserComponent},
   {path:"auth"  ,   component : AuthComponent},
   {path:"not-found",component:FourOhFourComponent},
   {path:'**' , redirectTo:"/not-found"}
@@ -51,10 +55,13 @@ const firebaseConfig = {
     AppareilViewComponent,
     SingleAppareilComponent,
     EditAppareilComponent,
+    UserListComponent,
+    NewUserComponent,
   ],
 
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig, 'angular-ff931'),
