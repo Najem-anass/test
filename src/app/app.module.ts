@@ -19,17 +19,23 @@ import { SinglAppareilComponent } from './singl-appareil/singl-appareil.componen
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserListComponent } from './user-list/user-list.component';
+import { auth } from 'firebase';
+import { NewUserComponent } from './new-user/new-user.component';
+import { UserService } from './services/user-service.service';
 
 const appRoutes: Routes = [
+  { path: "auth", component: AuthComponent },
   { path: "", component: AppareilViewComponantComponent },
   { path: "appareils", canActivate : [AuthGuardService] , component: AppareilViewComponantComponent },
   { path: "appareils/:id", canActivate : [AuthGuardService] , component:SinglAppareilComponent},
   { path : "edit-appareil" , canActivate : [AuthGuardService] , component : EditAppareilComponent},
-  { path: "auth", component: AuthComponent },
+  { path : "user-list" , canActivate : [AuthGuardService], component : UserListComponent},
+  { path : "new-user" , canActivate : [AuthGuardService], component : NewUserComponent},
   { path: "not-found" , component : FourOhFourComponent},
   { path: "**" , redirectTo : "/not-found"}
-];
+];  
 
 const firebaseConfig = {
   apiKey: "AIzaSyCVU3WBb9PHhLfV3DpscgHKQtSWNT5wmRI",
@@ -50,11 +56,14 @@ const firebaseConfig = {
     AuthComponent,
     SinglAppareilComponent,
     FourOhFourComponent,
-    EditAppareilComponent
+    EditAppareilComponent,
+    UserListComponent,
+    NewUserComponent
   ],
 
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig, 'angular-ff931'),
@@ -66,7 +75,8 @@ const firebaseConfig = {
   providers: [
     AppareilService,
     AuthServiceService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
 
   bootstrap: [AppComponent]
